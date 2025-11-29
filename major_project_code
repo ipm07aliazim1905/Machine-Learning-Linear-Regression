@@ -1,0 +1,46 @@
+#This program is based on the data visualisation of a dataset comprising primary education of various populations
+import pandas as pd
+import os
+import matplotlib.pyplot as plt
+
+project_path = os.getcwd()
+print('project path=', project_path)
+
+file_path = project_path + '\\education_dataset.xlsx'
+print('file path= ', file_path)
+
+df = pd.read_excel(file_path)
+print(df)
+
+#Bar graph of Share of population with no education
+plt.figure(figsize=(13,5))
+plt.bar(df['Entity'], df['Share of population with no education'])
+plt.xlabel('---Countries--->')
+plt.ylabel('---Share of population with no education--->')
+plt.title('Country-Illiteracy bar plot')
+plt.xticks(rotation=70)
+plt.tight_layout()
+plt.show()
+
+#Bar graph of Share of population with at least some basic education
+plt.figure(figsize=(12,4))
+plt.bar(df['Entity'], df['Share of population with at least some basic education'], width=0.5)
+plt.xlabel('---Countries--->')
+plt.ylabel('---Share of population with  at least some basic education--->')
+plt.title('Country-literacy bar plot')
+plt.xticks(rotation=70)
+plt.tight_layout()
+plt.show()
+
+#Box plot of Share of population with no education
+x=df['Share of population with no education']
+print(x)
+plt.boxplot(x)
+plt.show()
+
+
+#Box plot of the Share of population with at least some basic education
+x=df['Share of population with at least some basic education']
+print(x)
+plt.boxplot(x)
+plt.show()
